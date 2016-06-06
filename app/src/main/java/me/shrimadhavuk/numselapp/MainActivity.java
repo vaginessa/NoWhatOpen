@@ -45,8 +45,17 @@ public class MainActivity extends AppCompatActivity {
         String scheme = data.getScheme();
         if(scheme.equals("me.shrimadhavuk.whatsapp")){
             if(isPackageInstalled(WHATSAPP_PKG_NAME)){
-                String phoneno = data.getHost();
-                openWhatsappContact(phoneno);
+                String open = data.getHost();
+                if(open.equals("open")){
+                    List<String> params = data.getPathSegments();
+                    try {
+                        String phoneno = params.get(0); // "XXXXXXXXXXXXXX"
+                        openWhatsappContact(phoneno);
+                    }
+                    catch(Exception e){
+
+                    }
+                }
             }
             else{
                 Toast.makeText(MainActivity.this, "WhatsApp not installed", Toast.LENGTH_LONG).show();
