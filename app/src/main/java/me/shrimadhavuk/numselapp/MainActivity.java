@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn2;
     EditText txt1;
     String WHATSAPP_PKG_NAME = "com.whatsapp";
+    String msg = "me.shrimadhavuk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_SENDTO, uri);
         i.setPackage(WHATSAPP_PKG_NAME);
         startActivity(Intent.createChooser(i, ""));
+        Log.i(msg, "WhatsApp started");
     }
 
     private boolean isPackageInstalled(String uri) {
@@ -78,11 +80,50 @@ public class MainActivity extends AppCompatActivity {
         boolean app_installed = false;
         try {
             pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            Log.i(msg, "WhatsApp installed");
             app_installed = true;
         } catch (PackageManager.NameNotFoundException e) {
+            Log.i(msg, "WhatsApp NOT installed");
             app_installed = false;
         }
         return app_installed;
+    }
+
+    /** Called when the activity is about to become visible. */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(msg, "The onStart() event");
+        setContentView(R.layout.activity_main);
+    }
+
+    /** Called when the activity has become visible. */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(msg, "The onResume() event");
+        setContentView(R.layout.activity_main);
+    }
+
+    /** Called when another activity is taking focus. */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(msg, "The onPause() event");
+    }
+
+    /** Called when the activity is no longer visible. */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(msg, "The onStop() event");
+    }
+
+    /** Called just before the activity is destroyed. */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(msg, "The onDestroy() event");
     }
 
 }
