@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="enter your phone number in the given text box and chat with strangers without adding them to your contacts list!"
+        android:text="enter their phone number in the given text box and chat with them without adding them to your contacts list!"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
